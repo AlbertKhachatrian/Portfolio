@@ -23,48 +23,45 @@ suspend fun <R> makeApiCall(
     Result.Error(CallException(errorMessage = e.message, errorCode = errorMessage))
 }
 
-inline fun <ResultModel, RequestModel> networkBoundService(
+suspend inline fun <ResultModel, RequestModel> networkBoundService(
     crossinline query: () -> Flow<ResultModel>,
     crossinline fetch: suspend () -> Result<RequestModel>,
     crossinline saveFetchResult: suspend (ResultModel) -> Unit,
     crossinline responseMapper: (RequestModel) -> ResultModel,
     shouldFetch: Boolean = true
-)= flow{
-
-    if(!shouldFetch) {
+): Result<ResultModel> {
+    return if(!shouldFetch) {
         val data = query().firstOrNull()
         if(data != null){
-            emit(Result.Success(data))
+            Result.Success(data)
         }else{
-            emit(Result.Error<ResultModel>(CallException(1000, "No data in cache")))
+            Result.Error<ResultModel>(CallException(1000, "No data in cache"))
         }
-        return@flow
-    }
-
-    when(val fetchData = fetch()) {
-        is Result.Success -> {
-            if (fetchData.data != null) {
-                saveFetchResult(responseMapper(fetchData.data))
-                emit(Result.Success(query().first()))
-            } else {
-                val data = query().firstOrNull()
-                if (data != null) {
-                    emit(Result.Success(data))
+    }else{
+        when(val fetchData = fetch()) {
+            is Result.Success -> {
+                if (fetchData.data != null) {
+                    saveFetchResult(responseMapper(fetchData.data))
+                    Result.Success(query().first())
                 } else {
-                    emit(Result.Error<ResultModel>(CallException(1000, "No data in cache")))
+                    val data = query().firstOrNull()
+                    if (data != null) {
+                        Result.Success(data)
+                    } else {
+                        Result.Error<ResultModel>(CallException(1000, "No data in cache"))
+                    }
+                }
+            }
+            is Result.Error -> {
+                val data = query().firstOrNull()
+                if(data != null){
+                    Result.Success(data)
+                }else{
+                    Result.Error<ResultModel>(fetchData.errors)
                 }
             }
         }
-        is Result.Error -> {
-            val data = query().firstOrNull()
-            if(data != null){
-                emit(Result.Success(data))
-            }else{
-                emit(Result.Error<ResultModel>(fetchData.errors))
-            }
-        }
     }
-
 }
 
 //useful for non-cacheable operations

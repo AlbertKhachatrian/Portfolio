@@ -25,7 +25,7 @@ class DashboardRepositoryImpl(
     private val refillDao: RefillDao,
     private val dataSource: DataSource
 ) : DashboardRepository {
-    override suspend fun getBonus(): Flow<Result<BonusEntity>> {
+    override suspend fun getBonus(): Result<BonusEntity> {
         return networkBoundService(
             query = bonusDao::getBonus,
             fetch = {
@@ -51,7 +51,7 @@ class DashboardRepositoryImpl(
         )
     }
 
-    override suspend fun getGrade(): Flow<Result<GradeEntity>> {
+    override suspend fun getGrade(): Result<GradeEntity> {
         return networkBoundService(
             query = gradeDao::getGrade,
             fetch = {
@@ -77,7 +77,7 @@ class DashboardRepositoryImpl(
         )
     }
 
-    override suspend fun getProfit(): Flow<Result<ProfitEntity>> {
+    override suspend fun getProfit(): Result<ProfitEntity> {
         return networkBoundService(
             query = profitDao::getProfit,
             fetch = {
@@ -102,7 +102,7 @@ class DashboardRepositoryImpl(
         )
     }
 
-override suspend fun getRefill(): Flow<Result<RefillEntity>> {
+override suspend fun getRefill(): Result<RefillEntity> {
     return networkBoundService(
         query = refillDao::getRefill,
         fetch = {

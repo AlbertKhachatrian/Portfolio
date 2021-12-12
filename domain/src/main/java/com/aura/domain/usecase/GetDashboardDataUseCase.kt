@@ -10,9 +10,6 @@ import com.aura.domain.mapper.RefillMapper
 import com.aura.domain.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 class GetDashboardDataUseCase(
@@ -25,10 +22,10 @@ class GetDashboardDataUseCase(
 
     override suspend fun invoke(): List<Result<DashboardModel>> {
         return withContext(Dispatchers.IO){
-            val profit = async { dashboardRepository.getProfit() }.await().first()
-            val grade = async { dashboardRepository.getGrade() }.await().first()
-            val refill = async { dashboardRepository.getRefill() }.await().first()
-            val bonus = async { dashboardRepository.getBonus() }.await().first()
+            val profit = async { dashboardRepository.getProfit() }.await()
+            val grade = async { dashboardRepository.getGrade() }.await()
+            val refill = async { dashboardRepository.getRefill() }.await()
+            val bonus = async { dashboardRepository.getBonus() }.await()
             val mProfit: Result<Profit> = when(profit){
                 is Result.Success -> {
                     Result.Success(profitMapper.map(profit.data))

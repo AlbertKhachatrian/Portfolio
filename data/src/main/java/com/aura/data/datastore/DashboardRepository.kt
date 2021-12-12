@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.Flow
 
 interface DashboardRepository {
 
-    suspend fun getBonus(): Flow<Result<BonusEntity>>
+    suspend fun getBonus(): Result<BonusEntity>
 
-    suspend fun getGrade(): Flow<Result<GradeEntity>>
+    suspend fun getGrade(): Result<GradeEntity>
 
-    suspend fun getProfit(): Flow<Result<ProfitEntity>>
+    suspend fun getProfit(): Result<ProfitEntity>
 
-    suspend fun getRefill(): Flow<Result<RefillEntity>>
+    suspend fun getRefill(): Result<RefillEntity>
 
 }

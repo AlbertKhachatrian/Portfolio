@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aura.core.SingleLiveEvent
 import com.aura.core.network.Result
 import com.aura.domain.interactor.GetDashboardDataInteractor
 import com.aura.domain.model.DashboardModel
@@ -20,6 +21,8 @@ class DashboardViewModel(
     private val _loading by lazy { MutableLiveData<Boolean>() }
     val loading: LiveData<Boolean> get() = _loading
 
+    val error by lazy { SingleLiveEvent<String>() }
+
     fun getDashboardData() {
         _loading.value = true
         viewModelScope.launch(Dispatchers.IO) {
@@ -30,7 +33,7 @@ class DashboardViewModel(
                         it.data?.let { it1 -> data.add(it1) }
                     }
                     is Result.Error -> {
-
+                        error.postValue(it.errors.errorMessage)
                     }
                 }
             }
