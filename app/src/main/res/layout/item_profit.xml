@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/margin_30"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/grey">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_30"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/iv_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_alert_circle"
+            android:layout_marginTop="@dimen/margin_12"
+            android:layout_marginEnd="@dimen/margin_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_title_profit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Portfolio.Text.GreyText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_26"
+            android:text="@string/profit_from_stock"/>
+
+        <TextView
+            android:id="@+id/tv_profit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Portfolio.Text.HeaderText"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_profit"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_16"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_8"
+            tools:text="145,309.39$"/>
+
+        <TextView
+            android:id="@+id/tv_percent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Portfolio.Text.GreenText"
+            app:layout_constraintTop_toBottomOf="@id/tv_profit"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_8"
+            tools:text="78.16%"
+            app:drawableEndCompat="@drawable/ic_arrow_up" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tv_percent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_80">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.GreyText"
+                    android:text="@string/invested"/>
+
+                <TextView
+                    android:id="@+id/tv_invest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.BodyText"
+                    android:layout_marginTop="@dimen/margin_6"
+                    tools:text="76,616.42 $"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.GreyText"
+                    android:text="@string/total_price"/>
+
+                <TextView
+                    android:id="@+id/tv_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.BodyText"
+                    android:layout_marginTop="@dimen/margin_6"
+                    tools:text="0,0 ₽"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

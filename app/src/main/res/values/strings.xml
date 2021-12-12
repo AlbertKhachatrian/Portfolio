@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Portfolio</string>
+    <string name="rate_of_portfolio">Оценка портфеля</string>
+    <string name="in_stocks">В акциях</string>
+    <string name="balance_rub">Остаток RUB</string>
+    <string name="balance_usd">Остаток USD</string>
+    <string name="refilled">Пополнено</string>
+    <string name="withdrawn">Выведено</string>
+    <string name="withdrawn_rub">Выведено RUB</string>
+    <string name="plus">+</string>
+    <string name="refill_rub">Пополнено RUB</string>
+    <string name="refill_usd">Пополнено USD</string>
+    <string name="profit_from_stock">Прибыль с акций</string>
+    <string name="invested">Инвестировано</string>
+    <string name="total_price">Общая стоимость</string>
+    <string name="expected_bonus">Ожидаемый бонус</string>
+    <string name="in_team">В команде</string>
+    <string name="x_dol">%s $</string>
+    <string name="x_rub">%s ₽</string>
+    <string name="x_percent" formatted="true">%s %%</string>
+    <string name="ruble_0">0 ₽</string>
+</resources>

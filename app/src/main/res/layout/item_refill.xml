@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/margin_30"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/light_purple">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_30"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/iv_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_alert_circle"
+            android:layout_marginTop="@dimen/margin_12"
+            android:layout_marginEnd="@dimen/margin_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_title_refill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Portfolio.Text.GreyText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_26"
+            android:text="@string/refilled"/>
+
+        <TextView
+            android:id="@+id/tv_refill"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Portfolio.Text.HeaderText"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_refill"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_16"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_8"
+            tools:text="145,309.39$"/>
+
+        <TextView
+            android:id="@+id/tv_title_withdrawn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_28"
+            style="@style/Theme.Portfolio.Text.GreyText"
+            android:text="@string/withdrawn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_refill"/>
+
+        <TextView
+            android:id="@+id/tv_withdrawn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Theme.Portfolio.Text.SubHeaderText"
+            tools:text="95,607.00 $"
+            android:layout_marginTop="@dimen/margin_8"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_withdrawn"
+            app:layout_constraintEnd_toStartOf="@id/btn_withdraw_plus"
+            android:layout_marginEnd="@dimen/margin_8"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_withdraw_plus"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="@dimen/margin_16"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_withdrawn"
+            app:layout_constraintBottom_toBottomOf="@id/tv_withdrawn">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plus"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tv_withdrawn"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_30">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.GreyText"
+                    android:text="@string/refill_rub"/>
+
+                <TextView
+                    android:id="@+id/tv_refill_rub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.BodyText"
+                    android:layout_marginTop="@dimen/margin_6"
+                    tools:text="0,0 ₽"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.GreyText"
+                    android:text="@string/withdrawn_rub"/>
+
+                <TextView
+                    android:id="@+id/tv_withdrawn_rub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Theme.Portfolio.Text.BodyText"
+                    android:layout_marginTop="@dimen/margin_6"
+                    android:text="@string/ruble_0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

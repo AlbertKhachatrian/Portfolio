@@ -1,0 +1,57 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.aura.portfolio"
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding{
+        enabled = true
+    }
+}
+
+dependencies {
+
+    implementation project(":core")
+    implementation project(":data")
+    implementation project(":domain")
+    implementation libs.core
+    implementation libs.appCompat
+    implementation libs.material
+    implementation libs.constraintLayout
+    implementation libs.coroutines_core
+    implementation libs.coroutines_android
+    implementation libs.lifecycle
+    implementation libs.lifecycle_viewmodel
+    implementation libs.lifecycle_common
+    implementation libs.liveData
+    implementation libs.koin
+    implementation libs.navigation
+    implementation libs.navigationUi
+    implementation libs.glide
+
+}
